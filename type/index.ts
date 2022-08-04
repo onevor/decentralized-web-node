@@ -5,7 +5,7 @@
  * Date of copy: 02.08.2022;
  */
 
-type DID = string; // TODO: define a DID
+export type DID = string; // TODO: define a DID
 
 /**
  * Spec: https://identity.foundation/decentralized-web-node/spec/#messages
@@ -40,17 +40,14 @@ type DID = string; // TODO: define a DID
  * Need validator for dataCid and dataFormat.
  *  they are required if data is present.
  */
-type Descriptor = {
+export type Descriptor = {
     nonce: string; // MUST be a cryptographically random string that ensures each object is unique.
     method: string; // MUST be a string that matches a Decentralized Web Node Interface method.
     dataCid?: string; // MUST be the stringified Version 1 CID of the DAG PB encoded data.
     dataFormat?: string; // MUST be a string that corresponds with a registered IANA Media Type data format.
-
-    // In spec, but not in description of message object.
-    schema?: string; // TODO: find in spec. can be url;
-    threadId?: string; // TODO: find in spec, looks like UUID v4
-    dateCreated?: number; // TODO: find in spec, not sure what type
 };
+
+
 
 /**
  * Spec is inconsistent, example does not match description.
@@ -60,14 +57,14 @@ type Descriptor = {
  * 
  * Dummy type for now
  */
-type JWS = any;
-type JWE = any;
+export type JWS = any;
+export type JWE = any;
 
-type Attestation = JWS;
+export type Attestation = JWS;
 
-type Authorization = JWS;
+export type Authorization = JWS;
 
-type MessageRequest = {
+export type MessageRequest = {
     data: string; // TODO: type base64Url encoded string
     descriptor: Descriptor;
     attestation?: Attestation;
@@ -93,7 +90,7 @@ type MessageRequest = {
  *      as described in the Messages section.
  *  2.4 Append the object to the Request Object’s messages array.
  */
-type RequestObject =  {
+export type RequestObject =  {
     target: DID;
     messages: MessageRequest[];
 };
@@ -123,19 +120,19 @@ type RequestObject =  {
  *             If present, its value MUST be the resulting message entries returned from the invocation of the corresponding message.
  */
 
-type Status = {
+export type Status = {
     code: number; // HTTP code
     detail?: string; // if present its value MUST be a string that describes a terse summary of the status
 }
 
-type MessageEntries = any; // TODO: Type this, find in spec
+export type MessageEntries = any; // TODO: Type this, find in spec
 
-type MessageResult = {
+export type MessageResult = {
     status: Status;
     entries?: MessageEntries[];
 };
 
-type ResponseObject =  {
+export type ResponseObject =  {
     status?: Status;
     replies?: MessageResult[];
 };
