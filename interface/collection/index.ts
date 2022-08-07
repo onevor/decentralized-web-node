@@ -118,3 +118,22 @@ export interface CollectionCommit extends Descriptor {
     dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
     datePublished?: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
 };
+
+/**
+ *
+ * CollectionsDelete messages are JSON objects that include general Message Descriptor properties
+ *  and the following additional properties, which MUST be composed as follows: 
+ *
+ *  The message object MUST contain a descriptor property,
+ *      and its value MUST be a JSON object composed as follows:
+ *
+ *  1. The object MUST contain a method property,
+ *     and its value MUST be the string CollectionsDelete.
+ *  2. The object MUST contain an recordId property,
+ *     and its value MUST be a [RFC4122] UUID Version 4 string of the record to be deleted.
+ */
+export interface CollectionDelete extends Descriptor {
+    method: CollectionMethods.CollectionsDelete;
+    recordId: string; // MUST be a [RFC4122] UUID Version 4 string
+};
+
