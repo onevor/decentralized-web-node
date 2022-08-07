@@ -1,5 +1,19 @@
 import { Descriptor } from '../../type/index.ts';
 
+export enum DateSort {
+    createdAscending,
+    createdDescending,
+    publishedAscending,
+    publishedDescending,
+}
+
+export enum CollectionMethods {
+    CollectionsQuery,
+    CollectionsWrite,
+    CollectionsCommit,
+    CollectionsDelete,
+};
+
 /**
  * CollectionsQuery messages are JSON objects that include general Message Descriptor properties
  *  and the following additional properties, which MUST be composed as follows:
@@ -28,15 +42,8 @@ import { Descriptor } from '../../type/index.ts';
  *  5.3 publishedAscending: return results in order from the earliest datePublished value to the latest
  *  5.4 publishedDescending: return results in order from the latest datePublished value to the earliest.
  */
-
-export enum DateSort {
-    createdAscending,
-    createdDescending,
-    publishedAscending,
-    publishedDescending,
-}
-
 export interface CollectionQuery extends Descriptor {
+    method: CollectionMethods.CollectionsQuery;
     schema?: string; // MUST be a URI string
     recordId?: string; // MUST be a [RFC4122] UUID Version 4 string
     dateSort: keyof typeof DateSort;
@@ -72,9 +79,42 @@ export interface CollectionQuery extends Descriptor {
  *      that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
  */
 export interface CollectionWrite extends Descriptor {
+    method: CollectionMethods.CollectionsWrite;
     recordId: string; // MUST be a [RFC4122] UUID Version 4 string
     schema?: string; // MUST be a URI string
     published?: boolean; // MUST be a boolean indicating the record’s publication state.
     dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
-    datePublished: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
+    datePublished?: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
+};
+
+/**
+ *
+ * CollectionsCommit messages are JSON objects that include general Message Descriptor properties
+ *  and the following additional properties, which MUST be composed as follows:
+ * 
+ * The message object MUST contain a descriptor property,
+ *  and its value MUST be a JSON object composed as follows:
+ * 
+ *  1.  The object MUST contain a method property,
+ *      and its value MUST be the string CollectionsCommit.
+ *      FROM    TYPE    DESCRIPTION
+ *
+ *  2.  The object MUST contain an recordId property,
+ *      and its value MUST be a [RFC4122] UUID Version 4 string.
+ *  3.  The object MAY contain a schema property,
+ *      and if present its value MUST be a URI string that indicates the schema of the associated data.
+ *  4.  The object MUST contain a dateCreated property,
+ *      and its value MUST be a Unix epoch timestamp
+ *      that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
+ *  5.  The object MAY contain a datePublished property,
+ *      and its value MUST be a Unix epoch timestamp
+ *      that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
+ */
+
+export interface CollectionCommit extends Descriptor {
+    method: CollectionMethods.CollectionsCommit;
+    recordId: string; // MUST be a [RFC4122] UUID Version 4 string
+    schema?: string; // MUST be a URI string
+    dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
+    datePublished?: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
 };
