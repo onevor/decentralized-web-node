@@ -12,7 +12,7 @@ import { Descriptor } from '../../type/index.ts';
 /**
  * Threads are a linked series of topically associated messages
  *  that are intended to result in activities performed by entities participating in the message thread.
- * 
+ *
  *  Threads have the following methods:
  *    - ThreadsQuery
  *    - ThreadsCreate
@@ -31,7 +31,7 @@ export enum ThreadMethods {
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#query-2
- * 
+ *
  * Threads query dos not have a defined description in the spec.
  *  Only an example exists:
  * ```
@@ -83,22 +83,14 @@ export interface ThreadCreate extends Descriptor {
     published?: boolean;
 };
 
-ThreadsReply messages are JSON objects that include general Message Descriptor properties and the following additional properties, which MUST be composed as follows:
-
-The message object MUST contain a descriptor property, and its value MUST be a JSON object composed as follows:
-The object MUST contain a method property, and its value MUST be the string ThreadsReply.
-The object MUST contain a threadId property, and its value MUST be a [RFC4122] UUID Version 4 string of the Thread to which the reply belongs.
-The object MUST contain a parentId property, and its value MUST be a [RFC4122] UUID Version 4 string of the message in the Thread being replied to.
-The object MUST contain a schema property, and its value MUST be a URI string that indicates the schema of the data being passed in the thread message.
-
 /**
  * https://identity.foundation/decentralized-web-node/spec/#reply
  * ThreadsReply messages are JSON objects that include general Message Descriptor properties
  *  and the following additional properties, which MUST be composed as follows:
- * 
+ *
  * The message object MUST contain a descriptor property,
  *  and its value MUST be a JSON object composed as follows:
- * 
+ *
  * 1. The object MUST contain a method property,
  *     and its value MUST be the string ThreadsReply.
  *
@@ -142,13 +134,13 @@ export interface ThreadClose extends Descriptor {
  * https://identity.foundation/decentralized-web-node/spec/#delete-2
  * ThreadsDelete messages are JSON objects that include general Message Descriptor properties
  * and the following additional properties, which MUST be composed as follows:
- * 
+ *
  * The message object MUST contain a descriptor property,
  * and its value MUST be a JSON object composed as follows:
- * 
+ *
  * 1. The object MUST contain a method property,
  *    and its value MUST be the string ThreadsDelete.
- * 
+ *
  * 2. The object MUST contain a threadId property,
  *   and its value MUST be a [RFC4122] UUID Version 4 string for the Thread to be deleted.
  */
