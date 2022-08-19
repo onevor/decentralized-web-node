@@ -8,20 +8,20 @@
  * (c) Copyright by the onevor authors. All rights reserved. MIT license.
  */
 
-import { Descriptor } from '../../type/index.ts';
+import { Descriptor } from '../../type/index';
 
 export enum DateSort {
-    createdAscending,
-    createdDescending,
-    publishedAscending,
-    publishedDescending,
+    CREATED_ASCENDING = 'createdAscending',
+    CREATED_DESCENDING = 'createdDescending',
+    PUBLISHED_ASCENDING = 'publishedAscending',
+    PUBLISHED_DESCENDING = 'publishedDescending',
 }
 
 export enum CollectionMethods {
-    CollectionsQuery,
-    CollectionsWrite,
-    CollectionsCommit,
-    CollectionsDelete,
+    COLLECTIONS_QUERY = 'CollectionsQuery',
+    COLLECTIONS_WRITE = 'CollectionsWrite',
+    COLLECTIONS_COMMIT = 'CollectionsCommit',
+    COLLECTIONS_DELETE = 'CollectionsDelete',
 };
 
 /**
@@ -59,7 +59,7 @@ export enum CollectionMethods {
  *              return results in order from the latest datePublished value to the earliest.
  */
 export interface CollectionQuery extends Descriptor {
-    method: CollectionMethods.CollectionsQuery;
+    method: CollectionMethods.COLLECTIONS_QUERY;
     schema?: string; // MUST be a URI string
     recordId?: string; // MUST be a [RFC4122] UUID Version 4 string
     dateSort: keyof typeof DateSort;
@@ -98,7 +98,7 @@ export interface CollectionQuery extends Descriptor {
  *      that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
  */
 export interface CollectionWrite extends Descriptor {
-    method: CollectionMethods.CollectionsWrite;
+    method: CollectionMethods.COLLECTIONS_WRITE;
     recordId: string; // MUST be a [RFC4122] UUID Version 4 string
     schema?: string; // MUST be a URI string
     published?: boolean; // MUST be a boolean indicating the record’s publication state.
@@ -133,7 +133,7 @@ export interface CollectionWrite extends Descriptor {
  */
 
 export interface CollectionCommit extends Descriptor {
-    method: CollectionMethods.CollectionsCommit;
+    method: CollectionMethods.COLLECTIONS_COMMIT;
     recordId: string; // MUST be a [RFC4122] UUID Version 4 string
     schema?: string; // MUST be a URI string
     dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
@@ -155,7 +155,7 @@ export interface CollectionCommit extends Descriptor {
  *     and its value MUST be a [RFC4122] UUID Version 4 string of the record to be deleted.
  */
 export interface CollectionDelete extends Descriptor {
-    method: CollectionMethods.CollectionsDelete;
+    method: CollectionMethods.COLLECTIONS_DELETE;
     recordId: string; // MUST be a [RFC4122] UUID Version 4 string
 };
 

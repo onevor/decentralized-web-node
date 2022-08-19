@@ -7,7 +7,7 @@
  *
  * (c) Copyright by the onevor authors. All rights reserved. MIT license.
  */
-import { Descriptor } from '../../type/index.ts';
+import { Descriptor } from '../../type/index';
 
 /**
  * Threads are a linked series of topically associated messages
@@ -22,11 +22,11 @@ import { Descriptor } from '../../type/index.ts';
  */
 
 export enum ThreadMethods {
-    ThreadsQuery,
-    ThreadsCreate,
-    ThreadsReply,
-    ThreadsClose,
-    ThreadsDelete,
+    THREADS_QUERY = 'ThreadsQuery',
+    THREADS_CREATE = 'ThreadsCreate',
+    THREADS_REPLY = 'ThreadsReply',
+    THREADS_CLOSE = 'ThreadsClose',
+    THREADS_DELETE = 'ThreadsDelete',
 };
 
 /**
@@ -46,7 +46,7 @@ export enum ThreadMethods {
  */
 
 export interface ThreadQuery extends Descriptor {
-    method: ThreadMethods.ThreadsQuery;
+    method: ThreadMethods.THREADS_QUERY;
     threadId?: string; // MUST be a [RFC4122] UUID Version 4 string
 };
 
@@ -76,7 +76,7 @@ export interface ThreadQuery extends Descriptor {
  *      A value of false or the absence of the property indicates the thread MUST NOT be served in response to public queries that lack proper authorization.
  */
 export interface ThreadCreate extends Descriptor {
-    method: ThreadMethods.ThreadsCreate;
+    method: ThreadMethods.THREADS_CREATE;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
     threadType: string; // MUST be a URI string that indicates the overall type of thread that is being transacted.
     schema: string; // MUST be a URI string that indicates the schema of the data being passed in the thread message.
@@ -105,7 +105,7 @@ export interface ThreadCreate extends Descriptor {
  */
 
 export interface ThreadReply extends Descriptor {
-    method: ThreadMethods.ThreadsReply;
+    method: ThreadMethods.THREADS_REPLY;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
     parentId: string; // MUST be a [RFC4122] UUID Version 4 string
     schema: string; // MUST be a URI string that indicates the schema of the data being passed in the thread message.
@@ -126,7 +126,7 @@ export interface ThreadReply extends Descriptor {
  *      and its value MUST be a [RFC4122] UUID Version 4 string for the Thread to be closed.
  */
 export interface ThreadClose extends Descriptor {
-    method: ThreadMethods.ThreadsClose;
+    method: ThreadMethods.THREADS_CLOSE;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
 };
 
@@ -146,6 +146,6 @@ export interface ThreadClose extends Descriptor {
  */
 
 export interface ThreadDelete extends Descriptor {
-    method: ThreadMethods.ThreadsDelete;
+    method: ThreadMethods.THREADS_DELETE;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
 };
