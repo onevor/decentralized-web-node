@@ -27,7 +27,7 @@ export enum ThreadMethods {
     THREADS_REPLY = 'ThreadsReply',
     THREADS_CLOSE = 'ThreadsClose',
     THREADS_DELETE = 'ThreadsDelete',
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#query-2
@@ -48,7 +48,7 @@ export enum ThreadMethods {
 export interface ThreadQuery extends Descriptor {
     method: ThreadMethods.THREADS_QUERY;
     threadId?: string; // MUST be a [RFC4122] UUID Version 4 string
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#create
@@ -81,7 +81,7 @@ export interface ThreadCreate extends Descriptor {
     threadType: string; // MUST be a URI string that indicates the overall type of thread that is being transacted.
     schema: string; // MUST be a URI string that indicates the schema of the data being passed in the thread message.
     published?: boolean;
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#reply
@@ -109,7 +109,7 @@ export interface ThreadReply extends Descriptor {
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
     parentId: string; // MUST be a [RFC4122] UUID Version 4 string
     schema: string; // MUST be a URI string that indicates the schema of the data being passed in the thread message.
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#close
@@ -128,7 +128,7 @@ export interface ThreadReply extends Descriptor {
 export interface ThreadClose extends Descriptor {
     method: ThreadMethods.THREADS_CLOSE;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#delete-2
@@ -148,4 +148,4 @@ export interface ThreadClose extends Descriptor {
 export interface ThreadDelete extends Descriptor {
     method: ThreadMethods.THREADS_DELETE;
     threadId: string; // MUST be a [RFC4122] UUID Version 4 string
-};
+}

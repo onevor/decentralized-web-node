@@ -15,8 +15,6 @@ import { Descriptor } from '../../type/index';
  *  to various data and functionality provided by a Decentralized Web Node.
  * Permissions employ a capabilities-based architecture that allows for DID-based authorization
  *  and delegation of authorized capabilities to others, if allowed by the owner of a Decentralized Web Node.
- * 
- * 
  */
 
 export enum PermissionMethods {
@@ -24,7 +22,7 @@ export enum PermissionMethods {
     PERMISSIONS_GRANT = 'PermissionsGrant',
     PERMISSIONS_REVOKE = 'PermissionsRevoke',
     PERMISSIONS_QUERY = 'PermissionsQuery',
-};
+}
 /**
  * https://identity.foundation/decentralized-web-node/spec/#request
  * The message object MUST contain a descriptor property,
@@ -68,7 +66,7 @@ export interface PermissionRequestDescriptor extends Descriptor {
     grantedTo: string; // DID URI string of the party that is being granted the permission
     description?: string; // description of the permission
     scope: Scope;
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#request
@@ -113,7 +111,7 @@ export interface PermissionConditions {
     delegation?: boolean;
     publication?: boolean;
     sharedAccess?: boolean;
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#grant
@@ -163,7 +161,7 @@ export interface PermissionGrantDescriptor extends Descriptor {
     delegatedFrom?: string; // UUID 4 string matching the permissionGrantId of the PermissionsGrant it was delegated from
     expiry: number; // Unix epoch timestamp that can be used to trigger revocation activities
     scope: Scope;
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#revoke
@@ -201,4 +199,4 @@ export interface PermissionQueryDescriptor extends Descriptor {
     grantedTo?: string; // DID URI string of the party that is being granted the permission
     delegatedFrom?: string; // UUID 4 string matching the permissionGrantId of the PermissionsGrant it was delegated from
     scope?: Scope;
-};
+}

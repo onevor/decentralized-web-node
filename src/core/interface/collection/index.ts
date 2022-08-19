@@ -22,7 +22,7 @@ export enum CollectionMethods {
     COLLECTIONS_WRITE = 'CollectionsWrite',
     COLLECTIONS_COMMIT = 'CollectionsCommit',
     COLLECTIONS_DELETE = 'CollectionsDelete',
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#query
@@ -63,7 +63,7 @@ export interface CollectionQuery extends Descriptor {
     schema?: string; // MUST be a URI string
     recordId?: string; // MUST be a [RFC4122] UUID Version 4 string
     dateSort: keyof typeof DateSort;
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#write
@@ -104,7 +104,7 @@ export interface CollectionWrite extends Descriptor {
     published?: boolean; // MUST be a boolean indicating the record’s publication state.
     dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
     datePublished?: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#commit
@@ -138,12 +138,12 @@ export interface CollectionCommit extends Descriptor {
     schema?: string; // MUST be a URI string
     dateCreated: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was created by the DID owner or another permitted party.
     datePublished?: number; // MUST be a Unix epoch timestamp that MUST be set and interpreted as the time the logical entry was published by the DID owner or another permitted party.
-};
+}
 
 /**
  * https://identity.foundation/decentralized-web-node/spec/#delete
  * CollectionsDelete messages are JSON objects that include general Message Descriptor properties
- *  and the following additional properties, which MUST be composed as follows: 
+ *  and the following additional properties, which MUST be composed as follows:
  *
  *  The message object MUST contain a descriptor property,
  *      and its value MUST be a JSON object composed as follows:
@@ -157,5 +157,4 @@ export interface CollectionCommit extends Descriptor {
 export interface CollectionDelete extends Descriptor {
     method: CollectionMethods.COLLECTIONS_DELETE;
     recordId: string; // MUST be a [RFC4122] UUID Version 4 string
-};
-
+}
