@@ -3,12 +3,12 @@
  * The object MAY contain a collections property.
  *  If the property is not present, it indicates the Decentralized Web Node
  *  implementation does not support any methods of the interface.
- *  
+ *
  *  If the property is present,
  *      its value MUST be an object that MAY include any of the following properties,
  *      wherein a boolean true value indicates support for the interface method, while a boolean false value
  *      or omission of the property indicates the interface method is not supported:
- *  
+ *
  *  - CollectionsQuery
  *  - CollectionsWrite
  *  - CollectionsCommit
@@ -25,12 +25,12 @@ type Collection = {
  * The object MAY contain a actions property.
  *  If the property is not present, it indicates the Decentralized Web Node
  * implementation does not support any methods of the interface.
- * 
+ *
  *  If the property is present,
  *      its value MUST be an object that MAY include any of the following properties,
  *      wherein a boolean true value indicates support for the interface method, while a boolean false value
  *      or omission of the property indicates the interface method is not supported:
- * 
+ *
  *  - ThreadsQuery
  *  - ThreadsCreate
  *  - ThreadsReply
@@ -49,12 +49,12 @@ type Action = {
  * The object MAY contain a permissions property.
  *  If the property is not present, it indicates the Decentralized Web Node
  * implementation does not support any methods of the interface.
- * 
+ *
  *  If the property is present,
  *      its value MUST be an object that MAY include any of the following properties,
  *      wherein a boolean true value indicates support for the interface method, while a boolean false value
  *      or omission of the property indicates the interface method is not supported:
- * 
+ *
  *  - PermissionsRequest
  *  - PermissionsGrant
  *  - PermissionsRevoke
@@ -68,7 +68,7 @@ type Permission = {
 /**
  * The object MAY contain a messaging property,
  * and its value MAY be an object composed of the following:
- * 
+ *
  * The object MAY contain a batching property,
  *  and if present its value MUST be a boolean indicating whether the
  *  Decentralized Web Node handles multiple messages in a single request.
@@ -86,7 +86,7 @@ type Interfaces = {
     messaging: Messaging;
 };
 
-interface FeatureDetection {
+export interface FeatureDetection {
     type: 'FeatureDetection';
     interfaces: Interfaces;
-};
+}
