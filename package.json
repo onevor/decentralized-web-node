@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,16 @@
   },
   "homepage": "https://github.com/onevor/decentralized-web-node#readme",
   "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.22.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-mocha": "^10.1.0",
+    "mocha": "^10.0.0",
     "typescript": "^4.7.4"
   }
 }
