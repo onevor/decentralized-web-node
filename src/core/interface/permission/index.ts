@@ -8,7 +8,7 @@
  * (c) Copyright by the onevor authors. All rights reserved. MIT license.
  */
 
-import { Descriptor } from '../../type/index.ts';
+import { Descriptor } from '../../type/index';
 
 /**
  * The Permissions interface provides a mechanism for external entities to request access
@@ -20,10 +20,10 @@ import { Descriptor } from '../../type/index.ts';
  */
 
 export enum PermissionMethods {
-    PermissionsRequest,
-    PermissionsGrant,
-    PermissionsRevoke,
-    PermissionsQuery,
+    PERMISSIONS_REQUEST = 'PermissionsRequest',
+    PERMISSIONS_GRANT = 'PermissionsGrant',
+    PERMISSIONS_REVOKE = 'PermissionsRevoke',
+    PERMISSIONS_QUERY = 'PermissionsQuery',
 };
 /**
  * https://identity.foundation/decentralized-web-node/spec/#request
@@ -63,7 +63,7 @@ export interface Scope {
 }
 
 export interface PermissionRequestDescriptor extends Descriptor {
-    method: PermissionMethods.PermissionsRequest;
+    method: PermissionMethods.PERMISSIONS_REQUEST;
     grantedBy: string; // DID URI string of the party that is granting the permission
     grantedTo: string; // DID URI string of the party that is being granted the permission
     description?: string; // description of the permission
@@ -155,7 +155,7 @@ export interface PermissionConditions {
  *           If an identifier property is present the scope object MUST include a schema property.
  */
 export interface PermissionGrantDescriptor extends Descriptor {
-    method: PermissionMethods.PermissionsGrant;
+    method: PermissionMethods.PERMISSIONS_GRANT;
     permissionGrantId: string; // UUID 4 string representing the reply object
     permissionRequestId?: string; // UUID 4 string of the PermissionRequest object the permission is being granted in relation to
     grantedBy: string; // DID URI string of the party that is granting the permission
@@ -193,7 +193,7 @@ export interface PermissionGrantDescriptor extends Descriptor {
  */
 
 export interface PermissionQueryDescriptor extends Descriptor {
-    method: PermissionMethods.PermissionsQuery;
+    method: PermissionMethods.PERMISSIONS_QUERY;
     permissionRequestId?: string; // UUID 4 string of the PermissionRequest object the permission is being granted in relation to
     permissionGrantId?: string; // UUID 4 string of the PermissionGrant object the permission is being granted in relation to
     permissionRevokeId?: string; // UUID 4 string of the PermissionRevoke object the permission is being revoked in relation to
